@@ -1,21 +1,21 @@
+import { Calendar, Users, Trophy, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-import React from 'react';
-import { Calendar, Users, Trophy, Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+type ViewType = "events" | "calendar" | "leaderboard" | "profile";
 
 interface HeaderProps {
-  currentView: string;
-  onViewChange: (view: string) => void;
+  currentView: ViewType;
+  onViewChange: (view: ViewType) => void;
   onCreateEvent: () => void;
 }
 
 const Header = ({ currentView, onViewChange, onCreateEvent }: HeaderProps) => {
   const navItems = [
-    { id: 'events', label: 'Events', icon: Calendar },
-    { id: 'calendar', label: 'Calendar', icon: Calendar },
-    { id: 'leaderboard', label: 'Leaderboard', icon: Trophy },
-    { id: 'profile', label: 'Profile', icon: Users },
-  ];
+    { id: "events" as const, label: "Events", icon: Calendar },
+    { id: "calendar" as const, label: "Calendar", icon: Calendar },
+    { id: "leaderboard" as const, label: "Leaderboard", icon: Trophy },
+    { id: "profile" as const, label: "Profile", icon: Users },
+  ] as const;
 
   return (
     <header className="bg-white border-b border-border shadow-sm">
@@ -28,7 +28,7 @@ const Header = ({ currentView, onViewChange, onCreateEvent }: HeaderProps) => {
               </div>
               <h1 className="text-xl font-bold text-foreground">PokerEvents</h1>
             </div>
-            
+
             <nav className="hidden md:flex space-x-6">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -38,8 +38,8 @@ const Header = ({ currentView, onViewChange, onCreateEvent }: HeaderProps) => {
                     onClick={() => onViewChange(item.id)}
                     className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                       currentView === item.id
-                        ? 'bg-accent text-accent-foreground'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
+                        ? "bg-accent text-accent-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
                     }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -51,7 +51,10 @@ const Header = ({ currentView, onViewChange, onCreateEvent }: HeaderProps) => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <Button onClick={onCreateEvent} className="poker-gradient text-white hover:opacity-90">
+            <Button
+              onClick={onCreateEvent}
+              className="poker-gradient text-white hover:opacity-90"
+            >
               <Plus className="w-4 h-4 mr-2" />
               Create Event
             </Button>
