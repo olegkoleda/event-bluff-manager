@@ -34,7 +34,7 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
           <div className="w-16 h-16 poker-gradient rounded-2xl flex items-center justify-center mx-auto mb-4">
             <span className="text-white font-bold text-2xl">♠</span>
           </div>
-          <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>
+          <CardTitle className="text-2xl font-bold">Welcome to Replit</CardTitle>
           <CardDescription className="text-muted-foreground">
             Sign in to your PokerEvents account
           </CardDescription>
